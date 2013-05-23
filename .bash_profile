@@ -1,3 +1,4 @@
+export CLICOLOR=1
 export EC2_HOME=~/.ec2
 export PATH=/usr/local/share/python:/usr/local/bin:$PATH:$EC2_HOME/bin:/usr/local/texlive/2012/bin/x86_64-darwin/
 export EC2_KEYPAIR=hanalee
