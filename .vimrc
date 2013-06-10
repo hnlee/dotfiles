@@ -18,3 +18,8 @@ set shiftwidth=4
 " Linebreak at 80 columns
 set lbr
 set tw=80
+
+" For vim-R plugin
+set nocompatible
+filetype plugin on
+filetype indent on
