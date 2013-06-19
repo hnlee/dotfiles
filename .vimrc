@@ -23,3 +23,4 @@ set tw=80
 set nocompatible
 filetype plugin on
 filetype indent on
+let vimrplugin_tmux = 0
