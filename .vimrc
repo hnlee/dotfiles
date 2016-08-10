@@ -14,13 +14,29 @@ syntax enable
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set smarttab
 
 " Linebreak at 80 columns
-set lbr
-set tw=80
+set wrap linebreak nolist 
+set textwidth=80 
 
-" For vim-R plugin
-set nocompatible
-filetype plugin on
-filetype indent on
-let vimrplugin_tmux = 0
+" Highlight matching braces or parentheses
+set showmatch
+
+" Highlight search matches
+set hlsearch
+
+" Use ;; to exit insert mode
+inoremap ;; <esc>
+
+" Flash on error instead of sound
+set visualbell
+
+" Show buffer name in title
+set title
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
