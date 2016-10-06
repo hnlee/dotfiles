@@ -1,3 +1,12 @@
+" Start pathogen (plugin manager)
+execute pathogen#infect()
+
+" Turn on rainbow parentheses
+let g:rainbow_active = 1
+
+" Indent based on filetype
+filetype plugin indent on
+
 " Always show status bar
 set laststatus=2
 
@@ -48,11 +57,11 @@ noremap <left> <nop>
 noremap <right> <nop>
 noremap <down> <nop>
 
-" Use H to go to start of line, L to end of line
-nnoremap H ^
-nnoremap L $
-vnoremap H ^
-vnoremap L $
+" Use Ctrl-i to go to start of line, Ctrl-l to end of line
+nnoremap <C-i> ^
+nnoremap <C-a> $
+vnoremap <C-i> ^
+vnoremap <C-a> $
 
 " Flash on error instead of sound
 set visualbell
@@ -68,3 +77,10 @@ map <C-l> <C-w>l
 
 " Set , as leader key
 let mapleader=","
+
+" Start every markdown file in blog directory with template
+autocmd BufNewFile ~/hanalee.info/content/blog/*.markdown 0r ~/hanalee.info/content/blog/skeleton.template
+
+" Populate date field automatically
+iabbrev <expr> ymd strftime("%Y-%m-%d")
+
