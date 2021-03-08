@@ -1,0 +1,10 @@
+[user]
+	name = Hana Lee
+	email = hanalee07@gmail.com
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/hanalee/.gitignore
+  whitespace = fix,trailing-space
+[init]
+	templateDir = ~/.config/git/template

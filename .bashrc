@@ -1,8 +1,6 @@
 export CLICOLOR=1
 
-export PATH=.:/usr/local/bin:/usr/local/sbin:~/bin:~/.local/bin:/usr/local/opt/go/libexec/bin:$PATH
-
-export CLASSPATH=.:$HOME/java/junit-4.12.jar:$HOME/java/hamcrest-core-1.3.jar:$HOME/java/jmock-1.2.0/jmock-cglib-1.2.0.jar:$HOME/java/jmock-1.2.0/jmock-core-1.2.0.jar:$CLASSPATH
+export PATH=.:/usr/local/bin:/usr/local/sbin:~/bin:~/.local/bin:$PATH
 
 export PYTHONPATH=/usr/local/lib/python3.6/site-packages:/usr/local/lib/python2.7/site-packages
 
@@ -12,8 +10,6 @@ eval "$(pyenv virtualenv-init -)"
 #eval "$(exenv init -)"
 
 set -o vi
-bind '"fj":vi-movement-mode'
-bind '"jf":vi-movement-mode'
 
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'

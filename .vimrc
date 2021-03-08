@@ -3,12 +3,21 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Start pathogen (plugin manager)
 execute pathogen#infect()
 
-" Turn on rainbow parentheses
-let g:rainbow_active = 1
-
 " NerdTREE shortcut
-map <C-n> :NERDTreeToggle<CR>
+map <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden = 1
+
+" Wildmenu and wildmode
+set wildmenu
+set wildignorecase
+set wildmode=full
+
+" Netrw settings
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 
 " Indent based on filetype
 filetype plugin indent on
@@ -25,6 +34,9 @@ set ru
 " Enable syntax highlighting
 syntax enable
 
+" Set colorscheme
+colorscheme zenburn
+
 " Set encoding and format
 set encoding=utf-8
 set fileformat=unix
@@ -39,20 +51,11 @@ set smarttab
 " Indent
 set autoindent
 
-" Linebreak at 80 columns
-set wrap linebreak nolist
-set textwidth=80
-
 " Highlight matching braces or parentheses
 set showmatch
 
 " Highlight search matches
 set hlsearch
-
-" Remap keys for exiting insert mode
-inoremap fj <esc>
-inoremap jf <esc>
-inoremap <esc> <nop>
 
 " Toggle in and out of visual mode
 vnoremap v <esc>
@@ -116,3 +119,7 @@ iabbrev <expr> ymd strftime("%Y-%m-%d")
 
 " Syntax highlighting
 au BufRead,BufNewFile *.ru setfiletype ruby
+
+" Terraform formatting
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
