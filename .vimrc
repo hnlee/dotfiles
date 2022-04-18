@@ -1,5 +1,3 @@
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 " Start pathogen (plugin manager)
 execute pathogen#infect()
 
@@ -111,15 +109,10 @@ noremap <Leader>s :%s/\s\+$//e<CR>
 " Remove trailing whitespace on save
 autocmd BufWritePre *.* :%s/\s\+$//e
 
-" Start every markdown file in blog directory with template
-autocmd BufNewFile ~/hanalee.info/content/blog/*.markdown 0r ~/hanalee.info/content/blog/skeleton.template
-
-" Populate date field automatically
-iabbrev <expr> ymd strftime("%Y-%m-%d")
-
-" Syntax highlighting
-au BufRead,BufNewFile *.ru setfiletype ruby
-
 " Terraform formatting
 let g:terraform_fmt_on_save=1
 let g:terraform_align=1
+
+" Disable SQL completion
+let g:omni_sql_no_default_maps = 1
+
