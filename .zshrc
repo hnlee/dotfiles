@@ -1,3 +1,6 @@
+# Turn on colors
+export CLICOLOR=1
+
 # Keybindings
 bindkey -v
 bindkey '^R' history-incremental-search-backward
