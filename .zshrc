@@ -17,6 +17,7 @@ zstyle ':vcs_info:*' enable git
 # Aliases
 alias vim="nvim"
 alias cleanup='git fetch -p && git branch -vv | awk "/: gone]/{print \$1}" | xargs git branch -D'
+alias activate='source $HOME/.venv/audere/bin/activate'
 
 # Version managers
 eval "$(pyenv init -)"
@@ -26,3 +27,6 @@ export PATH="$HOME/.tfenv/bin:$PATH"
 
 # Credentials
 export AWS_SHARED_CREDENTIALS_FILE="$HOME/.aws/audere-session-token"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+

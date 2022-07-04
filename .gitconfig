@@ -8,3 +8,4 @@
   whitespace = fix,trailing-space
 [init]
 	templateDir = ~/.config/git/template
+	defaultBranch = main
