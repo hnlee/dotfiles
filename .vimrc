@@ -113,6 +113,10 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 let g:terraform_fmt_on_save=1
 let g:terraform_align=1
 
+" Black formatting
+let g:python3_host_prog='/Users/hanalee/.pyenv/shims/python'
+autocmd BufWritePre *.py Black
+
 " Disable SQL completion
 let g:omni_sql_no_default_maps = 1
 
