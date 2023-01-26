@@ -28,9 +28,6 @@ eval "$(pyenv init -)"
 export PATH="$HOME/.tfenv/bin:$PATH"
 #export PATH="$HOME/.nodenv/bin:$PATH"
 
-# Credentials
-export AWS_SHARED_CREDENTIALS_FILE="$HOME/.aws/audere-session-token"
-
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 export EDITOR=nvim
