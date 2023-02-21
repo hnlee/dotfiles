@@ -27,6 +27,7 @@ filetype plugin indent on
 
 " Always show status bar
 set laststatus=2
+set cmdheight=1
 
 " Show line number
 set nu
@@ -53,6 +54,7 @@ set smarttab
 
 " Indent
 set autoindent
+set smartindent
 
 " Highlight matching braces or parentheses
 set showmatch
@@ -120,6 +122,22 @@ let g:terraform_align=1
 
 " Disable SQL completion
 let g:omni_sql_no_default_maps = 1
+
+" Move lines
+nmap <M-j> :m+<CR>
+nmap <M-k> :m-2<CR>
+vmap <M-k> :m'<-2<CR>gv
+vmap <M-j> :m'>+<CR>gv
+
+" Add newline without entering insert mode
+nmap <M-o> mno<Esc>`n
+nmap <M-O> mnO<Esc>`n
+
+" Autoreload .vimrc on save
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc so $MYVIMRC
+augroup END
 
 " [CoC] Use tab for trigger completion with characters ahead and navigate
 function! CheckBackspace() abort
