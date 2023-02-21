@@ -113,10 +113,36 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 let g:terraform_fmt_on_save=1
 let g:terraform_align=1
 
-" Black formatting
-let g:python3_host_prog='/Users/hanalee/.pyenv/shims/python'
-autocmd BufWritePre *.py Black
-
 " Disable SQL completion
 let g:omni_sql_no_default_maps = 1
 
+" [CoC] Use tab for trigger completion with characters ahead and navigate
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" [CoC] Use enter to confirm completion
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" [CoC] GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" [CoC] Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
+" [CoC] Reduce update time
+set updatetime=300
+
+" [CoC] Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)

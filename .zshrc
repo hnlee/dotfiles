@@ -31,3 +31,5 @@ export PATH="$HOME/.tfenv/bin:$PATH"
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 export EDITOR=nvim
+
+source /Users/hanalee/.docker/init-zsh.sh || true # Added by Docker Desktop
