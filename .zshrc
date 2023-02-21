@@ -20,16 +20,17 @@ alias cleanup='git fetch -p && git branch -vv | awk "/: gone]/{print \$1}" | xar
 alias lastfive='git log --oneline -n5'
 
 # Version managers
-eval "$(pyenv init -)"
-#eval "$(nodenv init -)"
-export PATH="$HOME/.tfenv/bin:$PATH"
-#export PATH="$HOME/.nodenv/bin:$PATH"
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which nodenv > /dev/null; then eval "$(nodenv init - )"; fi
+if which asdf > /dev/null; then . $(brew --prefix asdf)/libexec/asdf.sh; fi
 
+# Set editor
 export EDITOR=nvim
 
+# Docker
 source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
 
+# Load additional local machine config
 if [ -f "$HOME/.zshrc_local" ]; then
   source "$HOME/.zshrc_local"
 fi

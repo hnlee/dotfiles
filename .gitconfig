@@ -1,11 +1,27 @@
 [user]
 	name = Hana Lee
-	email = hana@auderenow.org
+	email = hanalee07@gmail.com
+
 [color]
 	ui = true
+
 [core]
-	excludesfile = /Users/hanalee/.gitignore
+	excludesfile = ~/.gitignore
+  editor = nvim
   whitespace = fix,trailing-space
+
 [init]
 	templateDir = ~/.config/git/template
 	defaultBranch = main
+
+[push]
+  autoSetupRemote = true
+
+[pull]
+  rebase = true
+
+[alias]
+  whoami= !git config user.name && git config user.email
+
+[includeIf "gitdir:~/dev/"]
+  path = ~/.gitconfig-work
