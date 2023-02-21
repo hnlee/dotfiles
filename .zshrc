@@ -16,8 +16,6 @@ zstyle ':vcs_info:*' enable git
 
 # Aliases
 alias vim="nvim"
-alias cleanup='git fetch -p && git branch -vv | awk "/: gone]/{print \$1}" | xargs git branch -D'
-alias lastfive='git log --oneline -n5'
 
 # Version managers
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi

@@ -22,6 +22,13 @@
 
 [alias]
   whoami= !git config user.name && git config user.email
+  logs = log --graph --pretty=format:'%C(red)%h %C(yellow)(%cr) %C(reset)%s %C(blue)<%an>%C(green)%d'
+  last5 = !git logs -n5
+  recommit = commit --amend --no-edit
+  unstage = restore --staged
+  diffstaged = diff --staged
+  undo = reset HEAD~1
+  cleanup = "!bash -c 'git fetch -p && git branch -vv | awk \"/: gone]/{print \\$1}\" | xargs git branch -D'"
 
 [includeIf "gitdir:~/dev/"]
   path = ~/.gitconfig-work
