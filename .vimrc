@@ -2,7 +2,8 @@
 execute pathogen#infect()
 
 " NerdTREE shortcut
-map <C-t> :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 let NERDTreeShowHidden = 1
 
 " Wildmenu and wildmode
