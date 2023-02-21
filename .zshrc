@@ -18,18 +18,18 @@ zstyle ':vcs_info:*' enable git
 alias vim="nvim"
 alias cleanup='git fetch -p && git branch -vv | awk "/: gone]/{print \$1}" | xargs git branch -D'
 alias lastfive='git log --oneline -n5'
-alias epistore='source $HOME/.venv/audere/bin/activate'
-alias airflow='source $HOME/.venv/airflow/bin/activate'
-alias analysis='source $HOME/.venv/analysis/bin/activate'
 
 # Version managers
 eval "$(pyenv init -)"
 #eval "$(nodenv init -)"
 export PATH="$HOME/.tfenv/bin:$PATH"
 #export PATH="$HOME/.nodenv/bin:$PATH"
-
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 export EDITOR=nvim
 
-source /Users/hanalee/.docker/init-zsh.sh || true # Added by Docker Desktop
+source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+if [ -f "$HOME/.zshrc_local" ]; then
+  source "$HOME/.zshrc_local"
+fi
