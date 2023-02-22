@@ -9,6 +9,28 @@
 	excludesfile = ~/.gitignore
   editor = nvim
   whitespace = fix,trailing-space
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  light = false
+  syntax-theme = zenburn
+  line-numbers = true
+  side-by-side = true
+  plus-style = syntax darkgreen
+  plus-emph-style = syntax forestgreen
+  minus-style = syntax darkred
+  minus-emph-style = syntax firebrick
+  zero-style = syntax dim
+  file-style = yellow
+  file-decoration-style = yellow ol
+  hunk-header-style = blue
+  hunk-header-decoration-style = blue box
+
+[merge]
+  conflictstyle = diff3
 
 [init]
 	templateDir = ~/.config/git/template

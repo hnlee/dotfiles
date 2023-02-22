@@ -133,11 +133,19 @@ vmap <M-j> :m'>+<CR>gv
 nmap <M-o> mno<Esc>`n
 nmap <M-O> mnO<Esc>`n
 
+" Copy to MacOS clipboard
+vmap <C-c> :w !pbcopy<CR><CR>
+
 " Autoreload .vimrc on save
 augroup myvimrc
     au!
     au BufWritePost .vimrc so $MYVIMRC
 augroup END
+
+" Settings for fzf
+let g:fzf_preview_window = ['hidden,right,50%,<60(up,75%)', 'ctrl-p']
+let g:fzf_layout = { 'down': '12' }
+nnoremap <C-p> :Files<CR>
 
 " [CoC] Use tab for trigger completion with characters ahead and navigate
 function! CheckBackspace() abort

@@ -2,5 +2,9 @@
   "suggest.enablePreselect": false,
   "suggest.noselect": true,
   "python.formatting.provider": "black",
+  "python.sortImports.args": [
+    "--profile",
+    "black"
+  ],
   "coc.preferences.formatOnSave": true
 }
