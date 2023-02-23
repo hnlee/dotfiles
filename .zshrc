@@ -17,6 +17,7 @@ zstyle ':vcs_info:*' enable git
 
 # Aliases
 alias vim="nvim"
+alias reload="source ~/.zshrc"
 if which bat > /dev/null; then
   alias cat="bat"
   alias less="bat"
