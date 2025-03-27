@@ -2,9 +2,8 @@
   "suggest.enablePreselect": false,
   "suggest.noselect": true,
   "python.formatting.provider": "black",
-  "python.sortImports.args": [
-    "--profile",
-    "black"
-  ],
-  "coc.preferences.formatOnSave": true
+  "python.linting.enabled": true,
+  "coc.preferences.formatOnSave": true,
+  "json.format.enable": false,
+  "list.height": 25
 }

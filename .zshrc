@@ -25,8 +25,8 @@ fi
 if which rg > /dev/null; then
   alias grep="rg"
 fi
-if which exa > /dev/null; then
-  alias ls="exa --long --grid --all --classify --sort=type"
+if which eza > /dev/null; then
+  alias ls="eza --long --grid --all --classify --sort=type"
 fi
 
 # Version managers
@@ -48,3 +48,19 @@ source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
 if [ -f "$HOME/.zshrc_local" ]; then
   source "$HOME/.zshrc_local"
 fi
+
+# Set default Docker platform
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+# Set up completions
+fpath=(~/.zsh/ $fpath)
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+export GIT_COMPLETION_CHECKOUT_NO_GUESS=1
+
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+
+if which aws_completer > /dev/null; then \
+  complete -C '/usr/local/bin/aws_completer' aws
+fi
+

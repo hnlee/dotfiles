@@ -1,12 +1,12 @@
 [user]
-	name = Hana Lee
-	email = hanalee07@gmail.com
+  name = Hana Lee
+  email = hanalee07@gmail.com
 
 [color]
-	ui = true
+  ui = true
 
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
   editor = nvim
   whitespace = fix,trailing-space
   pager = delta
@@ -32,9 +32,12 @@
 [merge]
   conflictstyle = diff3
 
+[rerere]
+  enabled = true
+
 [init]
-	templateDir = ~/.config/git/template
-	defaultBranch = main
+  templateDir = ~/.config/git/template
+  defaultBranch = main
 
 [push]
   autoSetupRemote = true
@@ -51,6 +54,9 @@
   diffstaged = diff --staged
   undo = reset HEAD~1
   cleanup = "!bash -c 'git fetch -p && git branch -vv | awk \"/: gone]/{print \\$1}\" | xargs git branch -D'"
+  diffbranch = "!bash -c 'git diff $(git merge-base main head) head'"
+  rebasebranch = "!bash -c 'git rebase -i $(git merge-base main head) head'"
+  updatemain = "!bash -c 'git switch main && git pull --rebase && git switch - && git rebase -'"
 
 [includeIf "gitdir:~/dev/"]
   path = ~/.gitconfig-work

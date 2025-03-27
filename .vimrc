@@ -64,6 +64,13 @@ set showmatch
 " Highlight search matches
 set hlsearch
 
+" Case-insensitive search
+set ignorecase
+set smartcase
+
+" Make C-c behave exactly like C-[ or Esc
+imap <C-c> <esc>
+
 " Toggle in and out of visual mode
 vnoremap v <esc>
 
@@ -118,6 +125,9 @@ noremap <Leader>s :%s/\s\+$//e<CR>
 " Remove trailing whitespace on save
 autocmd BufWritePre *.* :%s/\s\+$//e
 
+" Organize imports on save
+autocmd BufWritePost *.py :!ruff check --fix %:p
+
 " Terraform formatting
 let g:terraform_fmt_on_save=1
 let g:terraform_align=1
@@ -166,9 +176,21 @@ inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 " [CoC] GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-w>l
+nmap <silent> gs :sp<CR><Plug>(coc-definition)<C-w>j
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" [CoC] Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
 " [CoC] Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
@@ -179,3 +201,14 @@ set updatetime=300
 " [CoC] Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" [Copilot]
+imap <silent><script><expr> <M-CR> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+imap <M-h> <Plug>(copilot-dismiss)
+imap <M-j> <Plug>(copilot-next)
+imap <M-k> <Plug>(copilot-previous)
+imap <M-l> <Plug>(copilot-accept-word)
+
+
+" vnoremap <leader>f c<C-R>=system('sha256sum', getreg('"'))[:-5]<CR><C-c>
