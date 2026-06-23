@@ -47,8 +47,9 @@
 
 [alias]
   whoami= !git config user.name && git config user.email
-  logs = log --graph --pretty=format:'%C(red)%h %C(yellow)(%cr) %C(reset)%s %C(blue)<%an>%C(green)%d'
-  last5 = !git logs -n5
+  defaultlog = log --graph --pretty=format:'%C(red)%h %C(yellow)(%cr) %C(reset)%s %C(blue)<%an>%C(green)%d'
+  last5 = !git defaultlog -n5
+  logs = !git defaultlog --branches="*"
   recommit = commit --amend --no-edit
   unstage = restore --staged
   diffstaged = diff --staged

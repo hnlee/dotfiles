@@ -156,3 +156,11 @@ fabric.properties
 
 # Pyright config
 pyrightconfig.json
+
+.aider*
+
+staging-provision.sh
+
+# Personal
+LOGFILE
+.claude

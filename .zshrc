@@ -26,13 +26,14 @@ if which rg > /dev/null; then
   alias grep="rg"
 fi
 if which eza > /dev/null; then
-  alias ls="eza --long --grid --all --classify --sort=type"
+  alias ls="eza --long --all --classify=always --sort=type --show-symlinks"
 fi
+alias utcnow="date -u -Iseconds"
 
 # Version managers
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which nodenv > /dev/null; then eval "$(nodenv init - )"; fi
-if which asdf > /dev/null; then . $(brew --prefix asdf)/libexec/asdf.sh; fi
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files --hidden'
@@ -64,3 +65,4 @@ if which aws_completer > /dev/null; then \
   complete -C '/usr/local/bin/aws_completer' aws
 fi
 
+export PATH="$HOME/.local/bin:$HOME/bin:$PATH"

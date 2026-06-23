@@ -126,11 +126,7 @@ noremap <Leader>s :%s/\s\+$//e<CR>
 autocmd BufWritePre *.* :%s/\s\+$//e
 
 " Organize imports on save
-autocmd BufWritePost *.py :!ruff check --fix %:p
-
-" Terraform formatting
-let g:terraform_fmt_on_save=1
-let g:terraform_align=1
+autocmd BufWritePost *.py :!ruff check --fix % && black %:p
 
 " Disable SQL completion
 let g:omni_sql_no_default_maps = 1
@@ -159,6 +155,18 @@ let g:fzf_preview_window = ['hidden,right,50%,<60(up,75%)', 'ctrl-p']
 let g:fzf_layout = { 'down': '12' }
 nnoremap <C-p> :Files<CR>
 
+" fzf wrapper for git grep
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+nnoremap <C-g> :GGrep<CR>
+
+" Terraform formatting
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
+
 " [CoC] Use tab for trigger completion with characters ahead and navigate
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -170,9 +178,8 @@ inoremap <silent><expr> <TAB>
       \ CheckBackspace() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" [CoC] Use enter to confirm completion
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <expr> <C-i> coc#refresh()
 
 " [CoC] GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
@@ -180,6 +187,7 @@ nmap <silent> gv :vsp<CR><Plug>(coc-definition)<C-w>l
 nmap <silent> gs :sp<CR><Plug>(coc-definition)<C-w>j
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
+
 
 " [CoC] Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -202,6 +210,9 @@ set updatetime=300
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" [CoC] Set workspace folders
+" autocmd FileType python let b:coc_root_patterns = ['pyproject.toml']
+
 " [Copilot]
 imap <silent><script><expr> <M-CR> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
@@ -209,6 +220,4 @@ imap <M-h> <Plug>(copilot-dismiss)
 imap <M-j> <Plug>(copilot-next)
 imap <M-k> <Plug>(copilot-previous)
 imap <M-l> <Plug>(copilot-accept-word)
-
-
-" vnoremap <leader>f c<C-R>=system('sha256sum', getreg('"'))[:-5]<CR><C-c>
+let g:copilot_workspace_folders = ['~/dev/audere', '~/dev/openrdt-internal', '~/dev/cv-pipelines', '~/dev/mediapipe']
